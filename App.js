@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import {View , StyleSheet , Platform } from 'react-native'
 import Word from './src/components/Word'
+import Box from './src/components/Box'
+
 
 // Flex box
 class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Word/>
+        {/* <Word/> */}
+        <Box/>
       </View>
     )
   }

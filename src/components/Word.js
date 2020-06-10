@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Text, View , StyleSheet , Dimensions} from 'react-native'
 
 export default class Word extends Component {
-
     render() {
         const words = [
             {id : 1 , en : 'One' , vn : 'Mot' , isMemorized : true},
@@ -15,7 +14,7 @@ export default class Word extends Component {
             <View style={styles.container}>
                {words.map((value,index) => {
                    return (
-                    <View style={styles.wordgroup} key={value.en}>
+                    <View style={styles.wordgroup} key={index}>
                         <Text style={styles.textEn}>{value.en}</Text>
                         <Text style={styles.textVn}> 
                             {value.isMemorized ? '----' : value.vn}
