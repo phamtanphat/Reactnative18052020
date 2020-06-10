@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View , StyleSheet , TouchableOpacity} from 'react-native'
+import { Text, View , StyleSheet , TouchableOpacity , Alert} from 'react-native'
 
 export default class Box extends Component {
     render() {
@@ -7,7 +7,23 @@ export default class Box extends Component {
             <View style={styles.container}>
                 <Text style={styles.textCount}> Count :  </Text>
                 <View style={styles.eventgroup}>
-                    <TouchableOpacity style={styles.boxIncrease}>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            Alert.alert(
+                                "Alert Title",
+                                "My Alert Msg",
+                                [
+                                  {
+                                    text: "Cancel",
+                                    onPress: () => console.log("Cancel Pressed"),
+                                    style: "cancel"
+                                  },
+                                  { text: "OK", onPress: () => console.log("OK Pressed") }
+                                ],
+                                { cancelable: false }
+                            );
+                        }}
+                        style={styles.boxIncrease}>
                         <Text style={styles.increase}>InCrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.boxDescrease}>
