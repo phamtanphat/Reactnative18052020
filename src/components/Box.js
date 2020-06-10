@@ -2,26 +2,23 @@ import React, { Component } from 'react'
 import { Text, View , StyleSheet , TouchableOpacity , Alert} from 'react-native'
 
 export default class Box extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            count : 1
+        }
+    }
+
+    // khi udapte gia tri : nen tao ra 1 gia tri moi , khong nen xu ly truc tiep cho gia tri
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.textCount}> Count :  </Text>
+                <Text style={styles.textCount}> Count :  {this.state.count}</Text>
                 <View style={styles.eventgroup}>
                     <TouchableOpacity 
                         onPress={() => {
-                            Alert.alert(
-                                "Alert Title",
-                                "My Alert Msg",
-                                [
-                                  {
-                                    text: "Cancel",
-                                    onPress: () => console.log("Cancel Pressed"),
-                                    style: "cancel"
-                                  },
-                                  { text: "OK", onPress: () => console.log("OK Pressed") }
-                                ],
-                                { cancelable: false }
-                            );
+                            this.setState({count : this.state.count++})
+                            console.log(this.state)
                         }}
                         style={styles.boxIncrease}>
                         <Text style={styles.increase}>InCrease</Text>
