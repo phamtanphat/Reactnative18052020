@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View , StyleSheet } from 'react-native'
+import {View , StyleSheet , Platform } from 'react-native'
 import Word from './src/components/Word'
 
 // Flex box
@@ -15,8 +15,8 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop : 50 ,
-    marginBottom: 25,
+    marginTop : Platform.OS === 'ios' ? 50 : 0 ,
+    marginBottom: Platform.OS === 'ios' ? 25 : 0 ,
     flex: 1,
   }
 })
