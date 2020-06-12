@@ -9,17 +9,9 @@ export default class List extends Component {
             count : 1,
             connection : false
         }
-        console.log("constructor")
-    }
-    UNSAFE_componentWillMount(){
-        console.log("componentWillMount")
-    }
-    shouldComponentUpdate(nextProps, nextState){
-        console.log(nextState.count);
-        return false
     }
     render() {
-        console.log("render")
+        console.log("render components List")
         return (
             <View style={styles.container}>
                 <Text >Count  : {this.state.count} </Text>
@@ -28,14 +20,10 @@ export default class List extends Component {
                 >
                     <Text>Click</Text>
                 </TouchableOpacity>
-                <Word/>
+                <Word data="data"/>
             </View>
         )
     }
-    componentDidMount(){
-        console.log("componentDidMount")
-    }
-    conDid
 }
 
 const styles = StyleSheet.create({
