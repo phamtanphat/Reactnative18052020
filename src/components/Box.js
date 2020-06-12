@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     },
     textCount: {
         fontSize : 30,
-        color : 'red'
+        color : 'red',
+        fontFamily : 'Senopathi Free Personal Use',
     },
     eventgroup: {
         width : '100%',

@@ -19,6 +19,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* reactnative18052020Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* reactnative18052020Tests.m */; };
 		4FC78CD97A3FEEB0DF5E554C /* libPods-reactnative18052020-reactnative18052020Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2F98249BD5583A6696C8B /* libPods-reactnative18052020-reactnative18052020Tests.a */; };
 		8BDD363C591C92A30C869AC3 /* libPods-reactnative18052020-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B52B0B680932D6EE98F90FF /* libPods-reactnative18052020-tvOS.a */; };
+		93926C88878548E081E8557D /* Senopathi Free Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1726D4E93EB84180AA335613 /* Senopathi Free Personal Use.ttf */; };
+		F57E272522A244208BA604EB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5145071E654787B33A0E79 /* Roboto-Black.ttf */; };
 		F5A63F5D8A9D3E13C4FB1EFF /* libPods-reactnative18052020-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41689220A220C4B0C3E0C29F /* libPods-reactnative18052020-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = reactnative18052020/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = reactnative18052020/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = reactnative18052020/main.m; sourceTree = "<group>"; };
+		1726D4E93EB84180AA335613 /* Senopathi Free Personal Use.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Senopathi Free Personal Use.ttf"; path = "../assets/fonts/Senopathi Free Personal Use.ttf"; sourceTree = "<group>"; };
 		18DC32D8BEE176CE06E53C8C /* Pods-reactnative18052020-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative18052020-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-reactnative18052020-tvOSTests/Pods-reactnative18052020-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* reactnative18052020-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reactnative18052020-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* reactnative18052020-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "reactnative18052020-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +61,7 @@
 		41689220A220C4B0C3E0C29F /* libPods-reactnative18052020-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnative18052020-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EB3CCD743DC421A5234EB6 /* Pods-reactnative18052020-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative18052020-tvOS.release.xcconfig"; path = "Target Support Files/Pods-reactnative18052020-tvOS/Pods-reactnative18052020-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		82F70D6F3608FC6A4620B7BD /* Pods-reactnative18052020-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative18052020-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-reactnative18052020-tvOSTests/Pods-reactnative18052020-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B5145071E654787B33A0E79 /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../assets/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		9B52B0B680932D6EE98F90FF /* libPods-reactnative18052020-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnative18052020-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93DA75789426F1DA2DBD6DE /* Pods-reactnative18052020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative18052020.debug.xcconfig"; path = "Target Support Files/Pods-reactnative18052020/Pods-reactnative18052020.debug.xcconfig"; sourceTree = "<group>"; };
 		CB523448F216E0742CC9D750 /* Pods-reactnative18052020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative18052020.release.xcconfig"; path = "Target Support Files/Pods-reactnative18052020/Pods-reactnative18052020.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +152,6 @@
 				82F70D6F3608FC6A4620B7BD /* Pods-reactnative18052020-tvOSTests.debug.xcconfig */,
 				18DC32D8BEE176CE06E53C8C /* Pods-reactnative18052020-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +184,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				226D3FB6330976FD5D32E3E7 /* Pods */,
+				E5B483B2BEC24D5F81B90FA7 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -196,6 +200,15 @@
 				2D02E4901E0B4A5D006451C7 /* reactnative18052020-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E5B483B2BEC24D5F81B90FA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8B5145071E654787B33A0E79 /* Roboto-Black.ttf */,
+				1726D4E93EB84180AA335613 /* Senopathi Free Personal Use.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +237,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "reactnative18052020" */;
 			buildPhases = (
-				4ADFD8368C88B66E558363B6 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -340,6 +352,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				F57E272522A244208BA604EB /* Roboto-Black.ttf in Resources */,
+				93926C88878548E081E8557D /* Senopathi Free Personal Use.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,28 +424,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		4ADFD8368C88B66E558363B6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-reactnative18052020-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 		79A396999D84B3F426B033B2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
