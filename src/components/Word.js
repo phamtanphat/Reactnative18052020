@@ -3,7 +3,6 @@ import { Text, View , StyleSheet , Dimensions} from 'react-native'
 
 export default class Word extends Component {
     render() {
-        console.log("render component Word")
         const words = [
             {id : 1 , en : 'One' , vn : 'Mot' , isMemorized : true},
             {id : 2 , en : 'Two' , vn : 'Hai' , isMemorized : false},

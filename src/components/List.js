@@ -1,26 +1,57 @@
 import React, { Component } from 'react'
-import { Text, View , StyleSheet, TouchableOpacity} from 'react-native'
-import Word from './Word';
+import { Text, View , StyleSheet, TouchableOpacity , FlatList , Dimensions} from 'react-native'
+
 
 export default class List extends Component {
     constructor(props){
         super(props);
         this.state = {
-            count : 1,
-            connection : false
+            words : [
+                {id : 1 , en : 'One' , vn : 'Mot' , isMemorized : true},
+                {id : 2 , en : 'Two' , vn : 'Hai' , isMemorized : false},
+                {id : 3 , en : 'Three' , vn : 'Ba' , isMemorized : false},
+                {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
+                {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
+            ]
         }
     }
-    render() {
-        console.log("render components List")
+
+    itemFlatList = (item ,index) =>{
         return (
-            <View style={styles.container}>
-                <Text >Count  : {this.state.count} </Text>
-                <TouchableOpacity
-                    onPress={() => this.setState({count : this.state.count + 1})}
-                >
-                    <Text>Click</Text>
-                </TouchableOpacity>
-                <Word data="data"/>
+            <View style={styles.wordgroup} >
+                <View style={styles.textgroup}>
+                    <Text style={styles.textEn}>{item.en}</Text>
+                    <Text style={styles.textVn}> 
+                        {item.isMemorized ? '----' : item.vn}
+                    </Text>
+                </View>
+                <View style={styles.textgroup}>
+                    <TouchableOpacity
+                        style={styles.buttonisMemorized}
+                    >
+                        <Text style={styles.textisMemorized}>isMemorized</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                         style={styles.buttonRemove}
+                    >
+                        <Text style={styles.textRemove}>Remove</Text>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
+        )
+        
+    }
+
+    render() {
+        return (
+            <View 
+                style={styles.container}>
+                <FlatList 
+                    data={this.state.words}
+                    keyExtractor={(item,index) => item.id.toString()}
+                    renderItem={({item,index}) => this.itemFlatList(item,index)}
+                />
             </View>
         )
     }
@@ -29,7 +60,47 @@ export default class List extends Component {
 const styles = StyleSheet.create({
     container : {
         flex : 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
+        marginHorizontal : 10,
+    },
+    wordgroup: {
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        backgroundColor: '#F0F0F0',
+        marginVertical: 10,
+        borderRadius : 5,
+        paddingVertical : 10
+    },
+    textgroup: {
+        flexDirection : 'row',
+        justifyContent: 'space-evenly',
+        marginBottom: 10
+    },
+    buttonisMemorized : {
+        padding : 10,
+        backgroundColor : 'red',
+        borderRadius : 5
+    },
+    buttonRemove: {
+        padding : 10,
+        backgroundColor : '#E0A800',
+        borderRadius : 5
+    },
+    textisMemorized: {
+        fontSize : 20,
+        color : 'white'
+    },
+    textRemove: {
+        fontSize : 20,
+        color : 'white'
+    },
+    textEn: {
+        color : '#45B157',
+        fontSize : Dimensions.get("window").width / 15,
+        fontWeight: '500'
+    },
+    textVn: {
+        color : '#DA2846',
+        fontSize : Dimensions.get("window").width / 15,
+        fontWeight: '500'
+    },
 })
