@@ -48,10 +48,14 @@ export default class List extends Component {
             <View 
                 style={styles.container}>
                 <FlatList 
-                    data={this.state.words}
+                    extraData={this.state.words}
                     keyExtractor={(item,index) => item.id.toString()}
+                    data={this.state.words}
                     renderItem={({item,index}) => this.itemFlatList(item,index)}
-                />
+                    ItemSeparatorComponent={() => {
+                        return <View style={styles.separator}/>
+                    }}
+               />
             </View>
         )
     }
@@ -66,7 +70,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         backgroundColor: '#F0F0F0',
-        marginVertical: 10,
         borderRadius : 5,
         paddingVertical : 10
     },
@@ -103,4 +106,7 @@ const styles = StyleSheet.create({
         fontSize : Dimensions.get("window").width / 15,
         fontWeight: '500'
     },
+    separator: {
+        height : 10
+    }
 })
