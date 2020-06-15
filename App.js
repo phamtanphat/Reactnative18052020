@@ -4,7 +4,8 @@ import Word from './src/components/Word'
 import Box from './src/components/Box'
 import List from './src/components/List'
 import Form from './src/components/Form'
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+KeyboardAwareScrollView
 
 // Flex box
 class App extends Component {

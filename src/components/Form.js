@@ -1,33 +1,45 @@
 import React, { Component } from 'react'
-import { Text, View , TextInput , StyleSheet , TouchableOpacity} from 'react-native'
+import { Text, View , TextInput , StyleSheet , TouchableOpacity } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class Form extends Component {
     render() {
         return (
-            <View style={styles.containerForm}>
-                <View style={styles.containerTextInput}>
-                    <TextInput style={styles.textInput}/>
-                    <TextInput style={styles.textInput}/>
+            <KeyboardAwareScrollView
+                contentContainerStyle={{flexGrow: 1}}>
+                <View style={styles.containerForm}>
+                    <View style={styles.containerTextInput}>
+                        <TextInput 
+                            onChangeText={text => {
+                                this.state.text = text
+                            }}
+                            placeholder="English"
+                            style={styles.textInput}/>
+                        <TextInput 
+                            placeholder="Vietnamese"
+                            style={styles.textInput}/>
+                    </View>
+                    <View style={styles.containerTouchable}>
+                        <TouchableOpacity
+                            style={styles.touchableAddword}
+                        >
+                            <Text style={styles.textTouchable}>Add word</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.touchableCancel}
+                        >
+                            <Text style={styles.textTouchable}>Cancel</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.containerTouchable}>
-                    <TouchableOpacity
-                        style={styles.touchableAddword}
-                    >
-                        <Text style={styles.textTouchable}>Add word</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.touchableCancel}
-                    >
-                        <Text style={styles.textTouchable}>Cancel</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+            </KeyboardAwareScrollView>
         )
     }
 }
 const styles = StyleSheet.create({
     containerForm : {
         flex : 1 ,
+        height : '100%',
         justifyContent : 'center',
     },
     containerTouchable: {
@@ -43,7 +55,7 @@ const styles = StyleSheet.create({
         borderWidth : 1,
         height: '40%',
         fontSize : 20,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
     },
     touchableAddword : {
         backgroundColor : '#218838',
