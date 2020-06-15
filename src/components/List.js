@@ -16,6 +16,17 @@ export default class List extends Component {
         }
     }
 
+    toggleMemorized = (item) => {
+        const newWords = this.state.words.map(word => {
+            if (word.id === item.id){
+                const newWord = {...item , isMemorized : !item.isMemorized}
+                return newWord
+            }
+            return word
+        })
+        this.setState({words : newWords})
+    }
+
     itemFlatList = (item ,index) =>{
         return (
             <View style={styles.wordgroup} >
@@ -27,19 +38,13 @@ export default class List extends Component {
                 </View>
                 <View style={styles.textgroup}>
                     <TouchableOpacity
-                        onPress={() => {
-                            const newWords = this.state.words.map(word => {
-                                if (word.id === item.id){
-                                    const newWord = {...item , isMemorized : !item.isMemorized}
-                                    return newWord
-                                }
-                                return word
-                            })
-                            this.setState({words : newWords})
-                        }}
-                        style={styles.buttonisMemorized}
+                        onPress={() => this.toggleMemorized(item)}
+                        style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
                     >
-                        <Text style={styles.textisMemorized}>isMemorized</Text>
+                        <Text 
+                            style={styles.textisMemorized}>
+                            {item.isMemorized ? "Forgot" : "isMemorized"}
+                        </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                          style={styles.buttonRemove}
@@ -91,6 +96,11 @@ const styles = StyleSheet.create({
     buttonisMemorized : {
         padding : 10,
         backgroundColor : 'red',
+        borderRadius : 5
+    },
+    buttonisForgot: {
+        padding : 10,
+        backgroundColor : '#218838',
         borderRadius : 5
     },
     buttonRemove: {
