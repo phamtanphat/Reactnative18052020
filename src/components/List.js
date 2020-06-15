@@ -27,6 +27,16 @@ export default class List extends Component {
                 </View>
                 <View style={styles.textgroup}>
                     <TouchableOpacity
+                        onPress={() => {
+                            const newWords = this.state.words.map(word => {
+                                if (word.id === item.id){
+                                    const newWord = {...item , isMemorized : !item.isMemorized}
+                                    return newWord
+                                }
+                                return word
+                            })
+                            this.setState({words : newWords})
+                        }}
                         style={styles.buttonisMemorized}
                     >
                         <Text style={styles.textisMemorized}>isMemorized</Text>
