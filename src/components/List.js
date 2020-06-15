@@ -27,6 +27,14 @@ export default class List extends Component {
         this.setState({words : newWords})
     }
 
+    removeWord = (item) => {
+        const newWords = this.state.words.filter(word => {
+            if(word.id === item.id) return false
+            return true
+        })
+        this.setState({words : newWords})
+    }
+
     itemFlatList = (item ,index) =>{
         return (
             <View style={styles.wordgroup} >
@@ -47,7 +55,8 @@ export default class List extends Component {
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                         style={styles.buttonRemove}
+                        onPress={() => this.removeWord(item)}
+                        style={styles.buttonRemove}
                     >
                         <Text style={styles.textRemove}>Remove</Text>
                     </TouchableOpacity>

@@ -3,6 +3,7 @@ import {View , StyleSheet , Platform } from 'react-native'
 import Word from './src/components/Word'
 import Box from './src/components/Box'
 import List from './src/components/List'
+import Form from './src/components/Form'
 
 
 // Flex box
@@ -12,7 +13,8 @@ class App extends Component {
       <View style={styles.container}>
         {/* <Word/> */}
         {/* <Box/> */}
-        <List/>
+        {/* <List/> */}
+        <Form />
       </View>
     )
   }
