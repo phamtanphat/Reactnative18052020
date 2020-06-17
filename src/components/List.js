@@ -76,6 +76,9 @@ export default class List extends Component {
         
     }
 
+    toggleForm = () => {
+        this.setState({shouldshowform : !this.state.shouldshowform})
+    }
     renderForm = (shouldshowform) => {
         if (shouldshowform){
             return (
@@ -98,6 +101,7 @@ export default class List extends Component {
                             <Text style={styles.textTouchable}>Add word</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                            onPress={() => this.toggleForm()}
                             style={styles.touchableCancel}
                         >
                             <Text style={styles.textTouchable}>Cancel</Text>
@@ -110,7 +114,7 @@ export default class List extends Component {
             return (
                 <TouchableOpacity
                     style={styles.buttonOpenForm}
-                >
+                    onPress={() => this.toggleForm()}>
                     <Text style={styles.textOpenForm}>+</Text>
                 </TouchableOpacity>
             )
