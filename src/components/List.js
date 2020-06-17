@@ -21,7 +21,8 @@ export default class List extends Component {
                 {id : 3 , en : 'Three' , vn : 'Ba' , isMemorized : false},
                 {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
                 {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
-            ]
+            ],
+            shouldshowform : false
         }
     }
 
@@ -75,11 +76,11 @@ export default class List extends Component {
         
     }
 
-    render() {
-        return (
-            <View 
-                style={styles.container}>
-                <View style={styles.containerTextInput}>
+    renderForm = (shouldshowform) => {
+        if (shouldshowform){
+            return (
+                <View >
+                    <View style={styles.containerTextInput}>
                     <TextInput 
                         onChangeText={text => {
                             this.state.text = text
@@ -89,19 +90,38 @@ export default class List extends Component {
                     <TextInput 
                         placeholder="Vietnamese"
                         style={styles.textInput}/>
+                    </View>
+                    <View style={styles.containerTouchable}>
+                        <TouchableOpacity
+                            style={styles.touchableAddword}
+                        >
+                            <Text style={styles.textTouchable}>Add word</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.touchableCancel}
+                        >
+                            <Text style={styles.textTouchable}>Cancel</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.containerTouchable}>
-                    <TouchableOpacity
-                        style={styles.touchableAddword}
-                    >
-                        <Text style={styles.textTouchable}>Add word</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.touchableCancel}
-                    >
-                        <Text style={styles.textTouchable}>Cancel</Text>
-                    </TouchableOpacity>
-                </View>
+                
+            );
+        } else {
+            return (
+                <TouchableOpacity
+                    style={styles.buttonOpenForm}
+                >
+                    <Text style={styles.textOpenForm}>+</Text>
+                </TouchableOpacity>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <View 
+                style={styles.container}>
+                {this.renderForm(this.state.shouldshowform)}
                 <FlatList 
                     extraData={this.state.words}
                     keyExtractor={(item,index) => item.id.toString()}
@@ -176,12 +196,12 @@ const styles = StyleSheet.create({
     },
     containerTextInput: {
         width : '100%',
-        height : '20%',
+        height: 150,
         justifyContent : 'space-evenly'
     },
     textInput : {
         borderWidth : 1,
-        height: '40%',
+        height: 60,
         fontSize : 20,
         paddingHorizontal: 10,
     },
@@ -199,5 +219,19 @@ const styles = StyleSheet.create({
         backgroundColor : 'red',
         padding : 15,
         borderRadius : 10
+    },
+    buttonOpenForm: {
+        width : '100%',
+        height : 50,
+        backgroundColor : '#45B157',
+        borderRadius : 5,
+        marginBottom : 10,
+        justifyContent : 'center',
+        alignItems : 'center'
+    },
+    textOpenForm: {
+        color : 'white',
+        fontSize : 30
     }
+
 })
