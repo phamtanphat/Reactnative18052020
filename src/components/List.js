@@ -22,6 +22,8 @@ export default class List extends Component {
                 {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
                 {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
             ],
+            en : '',
+            vn : '',
             shouldshowform : false
         }
     }
@@ -79,23 +81,45 @@ export default class List extends Component {
     toggleForm = () => {
         this.setState({shouldshowform : !this.state.shouldshowform})
     }
+
+    addWord = () => {
+        const newWords = [...this.state.words]
+        const {en , vn} = this.state
+        if (!en || !vn){
+            alert("Ban chua truyen du thong tin")
+            return
+        }
+        const newWord = {
+            id : this.state.words.length + 1,
+            en : en ,
+            vn : vn ,
+            isMemorized : false
+        }
+        newWords.unshift(newWord)
+        alert("Them du lieu thanh cong")
+        this.setState({words : newWords , en : '' , vn : ''})
+        this.inputEn.clear()
+        this.inputVn.clear()
+    }
     renderForm = (shouldshowform) => {
         if (shouldshowform){
             return (
                 <View >
                     <View style={styles.containerTextInput}>
                     <TextInput 
-                        onChangeText={text => {
-                            this.state.text = text
-                        }}
+                        ref={ref =>  this.inputEn = ref }
+                        onChangeText={text =>  this.state.en = text}
                         placeholder="English"
                         style={styles.textInput}/>
                     <TextInput 
+                        ref={ref =>  this.inputVn = ref }
+                        onChangeText={text => this.state.vn = text}
                         placeholder="Vietnamese"
                         style={styles.textInput}/>
                     </View>
                     <View style={styles.containerTouchable}>
                         <TouchableOpacity
+                            onPress={() => this.addWord()}
                             style={styles.touchableAddword}
                         >
                             <Text style={styles.textTouchable}>Add word</Text>
@@ -127,6 +151,7 @@ export default class List extends Component {
                 style={styles.container}>
                 {this.renderForm(this.state.shouldshowform)}
                 <FlatList 
+                    showsVerticalScrollIndicator={false}
                     extraData={this.state.words}
                     keyExtractor={(item,index) => item.id.toString()}
                     data={this.state.words}
