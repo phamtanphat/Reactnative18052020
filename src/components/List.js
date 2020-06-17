@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
-import { Text, View , StyleSheet, TouchableOpacity , FlatList , Dimensions} from 'react-native'
+import { 
+    Text, 
+    View , 
+    StyleSheet, 
+    TouchableOpacity , 
+    FlatList , 
+    Dimensions, 
+    TextInput
+} 
+from 'react-native'
 
 
 export default class List extends Component {
@@ -61,7 +70,6 @@ export default class List extends Component {
                         <Text style={styles.textRemove}>Remove</Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
         )
         
@@ -71,6 +79,29 @@ export default class List extends Component {
         return (
             <View 
                 style={styles.container}>
+                <View style={styles.containerTextInput}>
+                    <TextInput 
+                        onChangeText={text => {
+                            this.state.text = text
+                        }}
+                        placeholder="English"
+                        style={styles.textInput}/>
+                    <TextInput 
+                        placeholder="Vietnamese"
+                        style={styles.textInput}/>
+                </View>
+                <View style={styles.containerTouchable}>
+                    <TouchableOpacity
+                        style={styles.touchableAddword}
+                    >
+                        <Text style={styles.textTouchable}>Add word</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.touchableCancel}
+                    >
+                        <Text style={styles.textTouchable}>Cancel</Text>
+                    </TouchableOpacity>
+                </View>
                 <FlatList 
                     extraData={this.state.words}
                     keyExtractor={(item,index) => item.id.toString()}
@@ -137,5 +168,36 @@ const styles = StyleSheet.create({
     },
     separator: {
         height : 10
+    },
+    containerTouchable: {
+        flexDirection : 'row',
+        justifyContent : 'space-evenly',
+        marginBottom : 10
+    },
+    containerTextInput: {
+        width : '100%',
+        height : '20%',
+        justifyContent : 'space-evenly'
+    },
+    textInput : {
+        borderWidth : 1,
+        height: '40%',
+        fontSize : 20,
+        paddingHorizontal: 10,
+    },
+    touchableAddword : {
+        backgroundColor : '#218838',
+        padding : 15,
+        borderRadius : 10
+    },
+    textTouchable: {
+        color : 'white',
+        fontSize : 20,
+        fontWeight : '500'
+    },
+    touchableCancel: {
+        backgroundColor : 'red',
+        padding : 15,
+        borderRadius : 10
     }
 })

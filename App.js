@@ -14,8 +14,8 @@ class App extends Component {
       <View style={styles.container}>
         {/* <Word/> */}
         {/* <Box/> */}
-        {/* <List/> */}
-        <Form />
+        <List/>
+        {/* <Form /> */}
       </View>
     )
   }
