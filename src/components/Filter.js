@@ -22,7 +22,7 @@ class Filter extends Component {
         />
       </View>
       
-    );
+);
   }
 }
 
