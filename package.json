@@ -17,11 +17,13 @@
     "@babel/core": "^7.10.2",
     "@babel/runtime": "^7.10.2",
     "@react-native-community/eslint-config": "^1.1.0",
+    "@react-native-community/picker": "^1.6.3",
     "babel-jest": "^26.0.1",
     "eslint": "^7.1.0",
     "jest": "^26.0.1",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
+    "react-native-picker-select": "^7.0.0",
     "react-test-renderer": "16.11.0"
   },
   "jest": {

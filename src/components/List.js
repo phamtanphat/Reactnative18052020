@@ -6,9 +6,10 @@ import {
     TouchableOpacity , 
     FlatList , 
     Dimensions, 
-    TextInput
+    TextInput,
 } 
 from 'react-native'
+import RNPickerSelect from 'react-native-picker-select';
 
 
 export default class List extends Component {
@@ -24,7 +25,8 @@ export default class List extends Component {
             ],
             en : '',
             vn : '',
-            shouldshowform : false
+            shouldshowform : false,
+            filterMode : 'Show_All'
         }
     }
 
@@ -38,6 +40,9 @@ export default class List extends Component {
         })
         this.setState({words : newWords})
     }
+    setFilterMode = (filterMode) => {
+        this.setState({filterMode});
+    };
 
     removeWord = (item) => {
         const newWords = this.state.words.filter(word => {
@@ -145,11 +150,28 @@ export default class List extends Component {
         }
     }
 
+    renderFilter = () => {
+        return (
+            <View style={styles.containerPickerStyle}>
+                <RNPickerSelect
+                    value={this.state.filterMode}
+                    onValueChange={(value) => this.setFilterMode(value)}
+                    items={[
+                        { label: 'Show All', value: 'Show_All' },
+                        { label: 'Show Forgot', value: 'Show_Forgot' },
+                        { label: 'Show Memorized', value: 'Show_Memorized' },
+                    ]}
+                />
+            </View>
+        )
+    }
     render() {
         return (
             <View 
                 style={styles.container}>
                 {this.renderForm(this.state.shouldshowform)}
+                {this.renderFilter()}
+                
                 <FlatList 
                     showsVerticalScrollIndicator={false}
                     extraData={this.state.words}
@@ -261,6 +283,13 @@ const styles = StyleSheet.create({
     textOpenForm: {
         color : 'white',
         fontSize : 30
-    }
+    },
+    containerPickerStyle: {
+        borderWidth: 1,
+        borderRadius: 1,
+        borderColor: 'black',
+        padding : 10,
+        marginBottom: 10,
+    },
 
 })

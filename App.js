@@ -4,9 +4,8 @@ import Word from './src/components/Word'
 import Box from './src/components/Box'
 import List from './src/components/List'
 import Form from './src/components/Form'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Filter from './src/components/Filter'
-KeyboardAwareScrollView
+
 
 // Flex box
 class App extends Component {
@@ -15,9 +14,9 @@ class App extends Component {
       <View style={styles.container}>
         {/* <Word/> */}
         {/* <Box/> */}
-        {/* <List/> */}
+        <List/>
         {/* <Form /> */}
-        <Filter/>
+        {/* <Filter/> */}
       </View>
     )
   }
