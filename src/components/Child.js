@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Text, View , TouchableOpacity , StyleSheet} from 'react-native'
 
-export default class Child extends Component {
+export default class Child extends PureComponent {
+    shouldComponentUpdate(){
+        return false
+    }
     render() {
+        console.log("Render Child")
         return (
             <>
                 <View style={styles.eventgroup}>
@@ -17,7 +21,7 @@ export default class Child extends Component {
                         <Text style={styles.descrease}>DesCrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => this.props.onReset()}
+                        onPress={() => this.props.onReset(123213)}
                         style={styles.boxReset}>
                         <Text style={styles.reset}>Reset</Text>
                     </TouchableOpacity>
