@@ -9,13 +9,13 @@ export default class Box extends Component {
             count : 1
         }
     }
-    increase(){
+    onIncrease = () => {
         this.setState({count : this.state.count + 1})
     }
-    descrease(){
+    onDescrease = () => {
         this.setState({count : this.state.count - 1})
     }
-    reset(){
+    onReset = () =>{
         this.setState({count : 0})
     }
     // khi udapte gia tri : nen tao ra 1 gia tri moi , khong nen xu ly truc tiep cho gia tri
@@ -25,7 +25,12 @@ export default class Box extends Component {
                 <Text style={styles.textCount}> 
                     Count :  {this.state.count}
                 </Text>
-                <Child/>
+                <Child 
+                    value={this.state.count}
+                    onIncrease={this.onIncrease}
+                    onDescrease={this.onDescrease}
+                    onReset={this.onReset}
+                />
             </View>
         )
     }

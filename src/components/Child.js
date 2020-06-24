@@ -4,25 +4,25 @@ import { Text, View , TouchableOpacity , StyleSheet} from 'react-native'
 export default class Child extends Component {
     render() {
         return (
-            <View>
+            <>
                 <View style={styles.eventgroup}>
                     <TouchableOpacity 
-                        onPress={() => this.increase()}
+                        onPress={() => this.props.onIncrease()}
                         style={styles.boxIncrease}>
                         <Text style={styles.increase}>InCrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => this.descrease()}
+                        onPress={() => this.props.onDescrease()}
                         style={styles.boxDescrease}>
                         <Text style={styles.descrease}>DesCrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => this.reset()}
+                        onPress={() => this.props.onReset()}
                         style={styles.boxReset}>
                         <Text style={styles.reset}>Reset</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </>
         )
     }
 }
