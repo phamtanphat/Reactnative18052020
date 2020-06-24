@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { Text, View , StyleSheet , Dimensions , FlatList , TouchableOpacity} from 'react-native'
 
 export default class Word extends Component {
+    shouldComponentUpdate(nextProps){
+        if (nextProps.filterMode != this.props.filterMode || nextProps.words != this.props.words){
+            return true
+        }
+        return false
+    }
     itemFlatList = (item ,index) =>{
         const {filterMode} = this.props;
         // Cac truong hop phai return giao dien
@@ -23,7 +29,7 @@ export default class Word extends Component {
                     </View>
                     <View style={styles.textgroup}>
                         <TouchableOpacity
-                            onPress={() => this.toggleMemorized(item)}
+                            onPress={() => this.props.onToggleMemorized(item)}
                             style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
                         >
                             <Text 
@@ -32,7 +38,7 @@ export default class Word extends Component {
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => this.removeWord(item)}
+                            onPress={() => this.props.onRemoveWord(item)}
                             style={styles.buttonRemove}
                         >
                             <Text style={styles.textRemove}>Remove</Text>

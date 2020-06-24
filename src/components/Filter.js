@@ -4,18 +4,20 @@ import RNPickerSelect from 'react-native-picker-select';
 
 class Filter extends Component {
   state = {
-    filtermode: 'Show_All',
-  };
-  setFilterMode = (filtermode) => {
-    this.setState({filtermode});
+    filterMode: 'Show_All',
+    filterSelected: null,
   };
   render() {
     return (
       <View style={styles.containerPickerStyle}>
         <RNPickerSelect
-          value={this.props.filterMode}
           onValueChange={(value) => this.state.filterSelected = value}
-          onDonePress={() => this.setState({filterMode : this.state.filterSelected})}
+          onDonePress={() => {
+            this.setState({filterMode : this.state.filterSelected}, () => {
+              this.props.onSetFilterMode(this.state.filterMode)
+            })
+           
+          }}
           items={[
               { label: 'Show All', value: 'Show_All' },
               { label: 'Show Forgot', value: 'Show_Forgot' },

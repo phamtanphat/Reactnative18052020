@@ -12,6 +12,7 @@ from 'react-native'
 import Form from './Form';
 import Filter from './Filter';
 import Word from './Word';
+import { throwStatement } from '@babel/types';
 
 
 export default class List extends Component {
@@ -30,7 +31,7 @@ export default class List extends Component {
         }
     }
 
-    toggleMemorized = (item) => {
+    onToggleMemorized = (item) => {
         const newWords = this.state.words.map(word => {
             if (word.id === item.id){
                 const newWord = {...item , isMemorized : !item.isMemorized}
@@ -40,17 +41,18 @@ export default class List extends Component {
         })
         this.setState({words : newWords})
     }
-    setFilterMode = (filterMode) => {
-        this.setState({filterMode});
-    };
-
-    removeWord = (item) => {
+    
+    onRemoveWord = (item) => {
         const newWords = this.state.words.filter(word => {
             if(word.id === item.id) return false
             return true
         })
         this.setState({words : newWords})
     }
+
+    onSetFilterMode = (filterMode) => {
+        this.setState({filterMode});
+    };
 
     onToggleForm = () => {
         this.setState({shouldshowform : !this.state.shouldshowform})
@@ -81,9 +83,13 @@ export default class List extends Component {
                     onAddWord={this.onAddWord}
                     onToggleForm={this.onToggleForm}
                     shouldshowform={this.state.shouldshowform}/>
-                <Filter filterMode={this.state.filterMode}/>
+                <Filter 
+                    onSetFilterMode={this.onSetFilterMode}
+                    filterMode={this.state.filterMode}/>
                 <View style={styles.containerWord}>
                     <Word 
+                        onToggleMemorized={this.onToggleMemorized}
+                        onRemoveWord={this.onRemoveWord}
                         words={this.state.words}
                         filterMode={this.state.filterMode}
                         />
