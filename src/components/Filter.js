@@ -13,7 +13,9 @@ class Filter extends Component {
     return (
       <View style={styles.containerPickerStyle}>
         <RNPickerSelect
-          onValueChange={(value) => this.setFilterMode(value)}
+          value={this.props.filterMode}
+          onValueChange={(value) => this.state.filterSelected = value}
+          onDonePress={() => this.setState({filterMode : this.state.filterSelected})}
           items={[
               { label: 'Show All', value: 'Show_All' },
               { label: 'Show Forgot', value: 'Show_Forgot' },
@@ -32,7 +34,6 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     borderColor: 'black',
     padding : 20,
-    marginHorizontal: 10
   },
   pickerStyle: {
     padding: 50,

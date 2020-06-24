@@ -1,39 +1,98 @@
 import React, { Component } from 'react'
-import { Text, View , StyleSheet , Dimensions} from 'react-native'
+import { Text, View , StyleSheet , Dimensions , FlatList , TouchableOpacity} from 'react-native'
 
 export default class Word extends Component {
-    render() {
-        const words = [
-            {id : 1 , en : 'One' , vn : 'Mot' , isMemorized : true},
-            {id : 2 , en : 'Two' , vn : 'Hai' , isMemorized : false},
-            {id : 3 , en : 'Three' , vn : 'Ba' , isMemorized : false},
-            {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
-            {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
-        ]
-        return (
-            <View style={styles.container}>
-               {words.map((value,index) => {
-                   return (
-                    <View style={styles.wordgroup} key={index}>
-                        <Text style={styles.textEn}>{value.en}</Text>
+    itemFlatList = (item ,index) =>{
+        const {filterMode} = this.props;
+        // Cac truong hop phai return giao dien
+        // Th1 : Show_All
+        // Th2 : Show_Forgot va item.memorized
+        // Th3 : Show_memorized va !item.memorized
+        if (filterMode === 'Show_Forgot' && !item.isMemorized){
+            return null
+        } else if (filterMode === 'Show_Memorized' && item.isMemorized){
+            return null
+        } else {
+            return (
+                <View style={styles.wordgroup} >
+                    <View style={styles.textgroup}>
+                        <Text style={styles.textEn}>{item.en}</Text>
                         <Text style={styles.textVn}> 
-                            {value.isMemorized ? '----' : value.vn}
+                            {item.isMemorized ? '----' : item.vn}
                         </Text>
                     </View>
-                   )
-               })}
-            </View>
-        )
+                    <View style={styles.textgroup}>
+                        <TouchableOpacity
+                            onPress={() => this.toggleMemorized(item)}
+                            style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
+                        >
+                            <Text 
+                                style={styles.textisMemorized}>
+                                {item.isMemorized ? "Forgot" : "isMemorized"}
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => this.removeWord(item)}
+                            style={styles.buttonRemove}
+                        >
+                            <Text style={styles.textRemove}>Remove</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )
+        }     
+    }
+    render() {
+        return (
+            <FlatList 
+                showsVerticalScrollIndicator={false}
+                extraData={this.props.words}
+                keyExtractor={(item,index) => item.id.toString()}
+                data={this.props.words}
+                renderItem={({item,index}) => this.itemFlatList(item,index)}
+                ItemSeparatorComponent={() => {
+                    return <View style={styles.separator}/>
+                }}
+            />
+       )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex : 1,
-    },
     wordgroup: {
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        backgroundColor: '#F0F0F0',
+        borderRadius : 5,
+        paddingVertical : 5
+    },
+    textgroup: {
         flexDirection : 'row',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        marginBottom: 10
+    },
+    buttonisMemorized : {
+        padding : 10,
+        backgroundColor : 'red',
+        borderRadius : 5
+    },
+    buttonisForgot: {
+        padding : 10,
+        backgroundColor : '#218838',
+        borderRadius : 5
+    },
+    buttonRemove: {
+        padding : 10,
+        backgroundColor : '#E0A800',
+        borderRadius : 5
+    },
+    textisMemorized: {
+        fontSize : 20,
+        color : 'white'
+    },
+    textRemove: {
+        fontSize : 20,
+        color : 'white'
     },
     textEn: {
         color : '#45B157',
@@ -45,4 +104,7 @@ const styles = StyleSheet.create({
         fontSize : Dimensions.get("window").width / 15,
         fontWeight: '500'
     },
+    separator: {
+        height : 5
+    }
 })
