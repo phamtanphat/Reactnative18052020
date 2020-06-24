@@ -53,33 +53,45 @@ export default class List extends Component {
     }
 
     itemFlatList = (item ,index) =>{
-        return (
-            <View style={styles.wordgroup} >
-                <View style={styles.textgroup}>
-                    <Text style={styles.textEn}>{item.en}</Text>
-                    <Text style={styles.textVn}> 
-                        {item.isMemorized ? '----' : item.vn}
-                    </Text>
-                </View>
-                <View style={styles.textgroup}>
-                    <TouchableOpacity
-                        onPress={() => this.toggleMemorized(item)}
-                        style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
-                    >
-                        <Text 
-                            style={styles.textisMemorized}>
-                            {item.isMemorized ? "Forgot" : "isMemorized"}
+        const {filterMode} = this.state;
+        // Cac truong hop phai return giao dien
+        // Th1 : Show_All
+        // Th2 : Show_Forgot va item.memorized
+        // Th3 : Show_memorized va !item.memorized
+        if (filterMode === 'Show_Forgot' && !item.isMemorized){
+            return null
+        } else if (filterMode === 'Show_Memorized' && item.isMemorized){
+            return null
+        } else {
+            return (
+                <View style={styles.wordgroup} >
+                    <View style={styles.textgroup}>
+                        <Text style={styles.textEn}>{item.en}</Text>
+                        <Text style={styles.textVn}> 
+                            {item.isMemorized ? '----' : item.vn}
                         </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => this.removeWord(item)}
-                        style={styles.buttonRemove}
-                    >
-                        <Text style={styles.textRemove}>Remove</Text>
-                    </TouchableOpacity>
+                    </View>
+                    <View style={styles.textgroup}>
+                        <TouchableOpacity
+                            onPress={() => this.toggleMemorized(item)}
+                            style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
+                        >
+                            <Text 
+                                style={styles.textisMemorized}>
+                                {item.isMemorized ? "Forgot" : "isMemorized"}
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => this.removeWord(item)}
+                            style={styles.buttonRemove}
+                        >
+                            <Text style={styles.textRemove}>Remove</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-        )
+            )
+        }
+        
         
     }
 
@@ -155,7 +167,7 @@ export default class List extends Component {
             <View style={styles.containerPickerStyle}>
                 <RNPickerSelect
                     value={this.state.filterMode}
-                    onValueChange={(value) => this.setFilterMode(value)}
+                    onValueChange={(value) => this.setState({filterMode : value})}
                     items={[
                         { label: 'Show All', value: 'Show_All' },
                         { label: 'Show Forgot', value: 'Show_Forgot' },
