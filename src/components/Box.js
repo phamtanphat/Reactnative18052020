@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View , StyleSheet , TouchableOpacity , Alert} from 'react-native'
+import { Text, View , StyleSheet } from 'react-native'
+import Child from './Child'
 
 export default class Box extends Component {
     constructor(props){
@@ -24,23 +25,7 @@ export default class Box extends Component {
                 <Text style={styles.textCount}> 
                     Count :  {this.state.count}
                 </Text>
-                <View style={styles.eventgroup}>
-                    <TouchableOpacity 
-                        onPress={() => this.increase()}
-                        style={styles.boxIncrease}>
-                        <Text style={styles.increase}>InCrease</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={() => this.descrease()}
-                        style={styles.boxDescrease}>
-                        <Text style={styles.descrease}>DesCrease</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={() => this.reset()}
-                        style={styles.boxReset}>
-                        <Text style={styles.reset}>Reset</Text>
-                    </TouchableOpacity>
-                </View>
+                <Child/>
             </View>
         )
     }
@@ -56,38 +41,5 @@ const styles = StyleSheet.create({
         fontSize : 30,
         color : 'red',
         fontFamily : 'Senopathi Free Personal Use',
-    },
-    eventgroup: {
-        width : '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        marginTop : 20
-    },
-    boxIncrease: {
-        borderRadius : 10,
-        backgroundColor: 'green'
-    },
-    boxDescrease: {
-        borderRadius : 10,
-        backgroundColor: 'red',
-    },
-    boxReset: {
-        borderRadius : 10,  
-        backgroundColor: 'orange',
-    },
-    increase: {
-        fontSize : 20,
-        padding: 10,
-        color : 'white',
-    },
-    descrease: {
-        fontSize : 20,
-        padding: 10,
-        color : 'white'
-    },
-    reset: {
-        fontSize : 20,
-        padding: 10,
-        color : 'white'
-    },
+    }
 })

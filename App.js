@@ -13,8 +13,8 @@ class App extends Component {
     return (
       <View style={styles.container}>
         {/* <Word/> */}
-        {/* <Box/> */}
-        <List/>
+        <Box/>
+        {/* <List/> */}
         {/* <Form /> */}
         {/* <Filter/> */}
       </View>
