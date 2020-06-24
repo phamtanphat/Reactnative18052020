@@ -25,8 +25,6 @@ export default class List extends Component {
                 {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
                 {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
             ],
-            en : '',
-            vn : '',
             shouldshowform : false,
             filterMode : 'Show_All',
         }
@@ -54,13 +52,12 @@ export default class List extends Component {
         this.setState({words : newWords})
     }
 
-    toggleForm = () => {
+    onToggleForm = () => {
         this.setState({shouldshowform : !this.state.shouldshowform})
     }
 
-    addWord = () => {
+    onAddWord = (en , vn ) => {
         const newWords = [...this.state.words]
-        const {en , vn} = this.state
         if (!en || !vn){
             alert("Ban chua truyen du thong tin")
             return
@@ -73,16 +70,17 @@ export default class List extends Component {
         }
         newWords.unshift(newWord)
         alert("Them du lieu thanh cong")
-        this.setState({words : newWords , en : '' , vn : ''})
-        this.inputEn.clear()
-        this.inputVn.clear()
+        this.setState({words : newWords})
     }
     
     render() {
         return (
             <View 
                 style={styles.container}>
-                <Form shouldshowform={this.state.shouldshowform}/>
+                <Form 
+                    onAddWord={this.onAddWord}
+                    onToggleForm={this.onToggleForm}
+                    shouldshowform={this.state.shouldshowform}/>
                 <Filter filterMode={this.state.filterMode}/>
                 <View style={styles.containerWord}>
                     <Word 
