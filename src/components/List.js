@@ -26,7 +26,8 @@ export default class List extends Component {
             en : '',
             vn : '',
             shouldshowform : false,
-            filterMode : 'Show_All'
+            filterMode : 'Show_All',
+            filterSelected: '',
         }
     }
 
@@ -166,8 +167,8 @@ export default class List extends Component {
         return (
             <View style={styles.containerPickerStyle}>
                 <RNPickerSelect
-                    value={this.state.filterMode}
-                    onValueChange={(value) => this.setState({filterMode : value})}
+                    onValueChange={(value) => this.state.filterSelected = value}
+                    onDonePress={() => this.setState({filterMode : this.state.filterSelected})}
                     items={[
                         { label: 'Show All', value: 'Show_All' },
                         { label: 'Show Forgot', value: 'Show_Forgot' },
