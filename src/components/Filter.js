@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
+import {connect} from 'react-redux';
 
 class Filter extends Component {
   state = {
@@ -11,6 +12,7 @@ class Filter extends Component {
     return (
       <View style={styles.containerPickerStyle}>
         <RNPickerSelect
+          value={this.props.filterMode}
           onValueChange={(value) => this.state.filterSelected = value}
           onDonePress={() => {
             this.setState({filterMode : this.state.filterSelected}, () => {
@@ -42,4 +44,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Filter;
+const maptStateToProps = function (state) {
+  return {filterMode : state.filterMode}
+}
+export default connect(maptStateToProps)(Filter);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View , StyleSheet , Dimensions , FlatList , TouchableOpacity} from 'react-native'
+import {connect} from 'react-redux'
 
-export default class Word extends Component {
+class Word extends Component {
     shouldComponentUpdate(nextProps){
         if (nextProps.filterMode != this.props.filterMode || nextProps.words != this.props.words){
             return true
@@ -114,3 +115,8 @@ const styles = StyleSheet.create({
         height : 5
     }
 })
+
+const mapStateToProps = function (state) {
+    return {words : state.words , filterMode : state.filterMode} 
+}
+export default connect(mapStateToProps)(Word)

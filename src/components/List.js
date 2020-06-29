@@ -72,20 +72,10 @@ class List extends Component {
         return (
             <View 
                 style={styles.container}>
-                <Form 
-                    onAddWord={this.onAddWord}
-                    onToggleForm={this.onToggleForm}
-                    shouldshowform={this.state.shouldshowform}/>
-                <Filter 
-                    onSetFilterMode={this.onSetFilterMode}
-                    filterMode={this.state.filterMode}/>
+                <Form />
+                <Filter />
                 <View style={styles.containerWord}>
-                    <Word 
-                        onToggleMemorized={this.onToggleMemorized}
-                        onRemoveWord={this.onRemoveWord}
-                        words={this.state.words}
-                        filterMode={this.state.filterMode}
-                        />
+                    <Word />
                 </View>
             </View>
         )
