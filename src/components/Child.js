@@ -3,27 +3,23 @@ import { Text, View , TouchableOpacity , StyleSheet} from 'react-native'
 import { connect } from 'react-redux'
 
 class Child extends PureComponent {
-
     render() {
+        const {dispatch} = this.props
         return (
             <>
                 <View style={styles.eventgroup}>
                     <TouchableOpacity 
-                        onPress={() => {
-                            this.props.dispatch({type : 'INCREASE'})
-                        }}
+                        onPress={() => dispatch({type : 'INCREASE'})}
                         style={styles.boxIncrease}>
                         <Text style={styles.increase}>InCrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => {
-                            this.props.dispatch({type : 'DESCREASE'})
-                        }}
+                        onPress={() => dispatch({type : 'DESCREASE'})}
                         style={styles.boxDescrease}>
                         <Text style={styles.descrease}>DesCrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => this.props.onReset(123213)}
+                        onPress={() => dispatch({type : 'RESET' , reset : 0})}
                         style={styles.boxReset}>
                         <Text style={styles.reset}>Reset</Text>
                     </TouchableOpacity>

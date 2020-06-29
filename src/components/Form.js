@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View , TextInput , StyleSheet , TouchableOpacity } from 'react-native'
+import {connect} from 'react-redux'
 
-export default class Form extends Component {
+class Form extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -115,3 +116,9 @@ const styles = StyleSheet.create({
         marginBottom : 10
     },
 })
+
+const mapStateToProps = function(state) {
+    return {shouldshowform : state.shouldshowform}
+}
+
+export default connect(mapStateToProps)(Form)

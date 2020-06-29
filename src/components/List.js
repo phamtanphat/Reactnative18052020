@@ -7,8 +7,9 @@ from 'react-native'
 import Form from './Form'; 
 import Filter from './Filter';
 import Word from './Word';
+import {connect} from 'react-redux'
 
-export default class List extends Component {
+class List extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -19,7 +20,6 @@ export default class List extends Component {
                 {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
                 {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
             ],
-            shouldshowform : false,
             filterMode : 'Show_All',
         }
     }
@@ -101,3 +101,5 @@ const styles = StyleSheet.create({
         marginVertical : 10
     }
 })
+
+export default connect()(List)

@@ -8,20 +8,24 @@ import Filter from './src/components/Filter'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-const store = createStore((state = 0, action) => {
+const defaultState = {
+  words : [
+    {id : 1 , en : 'One' , vn : 'Mot' , isMemorized : true},
+    {id : 2 , en : 'Two' , vn : 'Hai' , isMemorized : false},
+    {id : 3 , en : 'Three' , vn : 'Ba' , isMemorized : false},
+    {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
+    {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
+  ],
+  shouldshowform : false,
+  filterMode : 'Show_All',
+}
+
+const store = createStore((state = defaultState, action) => {
   // dinh nghia ra action
-  if (action.type === 'INCREASE'){
-    return state + 1
-  }
-  if (action.type === 'DESCREASE'){
-    return state - 1
-  }
-  if (action.type === 'RESET'){
-    return action.reset
-  }
   return state;
 })
 
+console.disableYellowBox = true;
 
 // Flex box
 class App extends Component {
@@ -30,9 +34,8 @@ class App extends Component {
       <View style={styles.container}>
         {/* <Word/> */}
         <Provider store={store}>
-          <Box />
+          <List/>
         </Provider>
-        {/* <List/> */}
         {/* <Form /> */}
         {/* <Filter/> */}
       </View>
