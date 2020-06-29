@@ -1,22 +1,24 @@
 import React, { PureComponent } from 'react'
 import { Text, View , TouchableOpacity , StyleSheet} from 'react-native'
+import { connect } from 'react-redux'
 
-export default class Child extends PureComponent {
-    shouldComponentUpdate(){
-        return false
-    }
+class Child extends PureComponent {
+
     render() {
-        console.log("Render Child")
         return (
             <>
                 <View style={styles.eventgroup}>
                     <TouchableOpacity 
-                        onPress={() => this.props.onIncrease()}
+                        onPress={() => {
+                            this.props.dispatch({type : 'INCREASE'})
+                        }}
                         style={styles.boxIncrease}>
                         <Text style={styles.increase}>InCrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => this.props.onDescrease()}
+                        onPress={() => {
+                            this.props.dispatch({type : 'DESCREASE'})
+                        }}
                         style={styles.boxDescrease}>
                         <Text style={styles.descrease}>DesCrease</Text>
                     </TouchableOpacity>
@@ -65,3 +67,5 @@ const styles = StyleSheet.create({
         color : 'white'
     },
 })
+
+export default connect()(Child)

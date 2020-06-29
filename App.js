@@ -8,9 +8,20 @@ import Filter from './src/components/Filter'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-const store = createStore((state =  0, action) => {
+const store = createStore((state = 0, action) => {
+  // dinh nghia ra action
+  if (action.type === 'INCREASE'){
+    return state + 1
+  }
+  if (action.type === 'DESCREASE'){
+    return state - 1
+  }
+  if (action.type === 'RESET'){
+    return action.reset
+  }
   return state;
 })
+
 
 // Flex box
 class App extends Component {
