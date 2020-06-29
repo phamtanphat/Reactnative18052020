@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View , StyleSheet , TouchableOpacity } from 'react-native'
 import Child from './Child'
+import { connect } from 'react-redux'
 
-export default class Box extends Component {
+class Box extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -10,6 +11,7 @@ export default class Box extends Component {
             phonenumber : 0
         }
     }
+
     onIncrease = () => {
         this.setState({count : this.state.count + 1})
     }
@@ -21,20 +23,11 @@ export default class Box extends Component {
     }
     // khi udapte gia tri : nen tao ra 1 gia tri moi , khong nen xu ly truc tiep cho gia tri
     render() {
-        console.log("Render Box")
         return (
             <View style={styles.container}>
                 <Text style={styles.textCount}> 
-                    Count :  {this.state.count}
+                    Count :  {this.props.count}
                 </Text>
-                <Text>
-                    Phone Number : {this.state.phonenumber}
-                </Text>
-                <TouchableOpacity
-                    onPress={() => this.setState({phonenumber : Math.random()})}
-                >
-                    <Text>Random Number</Text>
-                </TouchableOpacity>
                 <Child 
                     value={this.state.count}
                     onIncrease={this.onIncrease}
@@ -58,3 +51,11 @@ const styles = StyleSheet.create({
         fontFamily : 'Senopathi Free Personal Use',
     }
 })
+
+const mapStateToProps = function(state){
+    return {count : state}
+}
+
+export default connect(mapStateToProps)(Box)
+
+

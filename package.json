@@ -24,7 +24,9 @@
     "metro-react-native-babel-preset": "^0.59.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-picker-select": "^7.0.0",
-    "react-test-renderer": "16.11.0"
+    "react-redux": "^7.2.0",
+    "react-test-renderer": "16.11.0",
+    "redux": "^4.0.5"
   },
   "jest": {
     "preset": "react-native"

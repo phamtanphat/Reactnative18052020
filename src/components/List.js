@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
 import { 
-    Text, 
     View , 
     StyleSheet, 
-    TouchableOpacity , 
-    FlatList , 
-    Dimensions, 
-    TextInput,
 } 
 from 'react-native'
-import Form from './Form';
+import Form from './Form'; 
 import Filter from './Filter';
 import Word from './Word';
-import { throwStatement } from '@babel/types';
-
 
 export default class List extends Component {
     constructor(props){
@@ -94,7 +87,6 @@ export default class List extends Component {
                         filterMode={this.state.filterMode}
                         />
                 </View>
-                
             </View>
         )
     }

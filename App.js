@@ -5,7 +5,12 @@ import Box from './src/components/Box'
 import List from './src/components/List'
 import Form from './src/components/Form'
 import Filter from './src/components/Filter'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
+const store = createStore((state =  0, action) => {
+  return state;
+})
 
 // Flex box
 class App extends Component {
@@ -13,8 +18,10 @@ class App extends Component {
     return (
       <View style={styles.container}>
         {/* <Word/> */}
-        {/* <Box/> */}
-        <List/>
+        <Provider store={store}>
+          <Box />
+        </Provider>
+        {/* <List/> */}
         {/* <Form /> */}
         {/* <Filter/> */}
       </View>
@@ -31,6 +38,5 @@ const styles = StyleSheet.create({
 })
 
 export default App;
-
 
 
