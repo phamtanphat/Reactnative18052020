@@ -10,19 +10,6 @@ import Word from './Word';
 import {connect} from 'react-redux'
 
 class List extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            words : [
-                {id : 1 , en : 'One' , vn : 'Mot' , isMemorized : true},
-                {id : 2 , en : 'Two' , vn : 'Hai' , isMemorized : false},
-                {id : 3 , en : 'Three' , vn : 'Ba' , isMemorized : false},
-                {id : 4 , en : 'Four' , vn : 'Bon' , isMemorized : false},
-                {id : 5 , en : 'Five' , vn : 'Nam' , isMemorized : true},
-            ],
-            filterMode : 'Show_All',
-        }
-    }
 
     onToggleMemorized = (item) => {
         const newWords = this.state.words.map(word => {
