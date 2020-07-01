@@ -25,12 +25,45 @@ const defaultWords = [
 ]
 
 function wordReducer(state = defaultWords , action){
+  if (action.type === 'ADD_WORD'){
+    const newWords = [...state]
+    const newWord = {
+        id : state.length + 1,
+        en : action.en ,
+        vn : action.vn ,
+        isMemorized : false
+    }
+    newWords.unshift(newWord)
+    return newWords
+  }
+  if (action.type === 'TOGGLE_MEMORIZED'){
+    const newWords = state.map(word => {
+      if (word.id === action.id){
+        return {...word , isMemorized : !word.isMemorized}
+      }
+      return word
+    })
+    return newWords
+  }
+  if (action.type === 'REMOVE_WORD'){
+    const newWords = state.filter(word => word.id !== action.id)
+    return newWords
+  }
   return state
 }
 function shouldshowformReducer(state = false , action) {
+  if (action.type === "TOGGLE_FORM"){
+    return !state
+  }
+  if (action.type === 'ADD_WORD'){
+    return !state
+  }
   return state
 }
 function filterModeReducer(state = 'Show_All' , action) {
+  if (action.type === 'SET_FILTER_MODE'){
+    return action.filterMode
+  }
   return state
 }
 
@@ -68,40 +101,3 @@ const styles = StyleSheet.create({
 })
 
 export default App;
-
-
-
-// (state = defaultState, action) => {
-//   // dinh nghia ra action
-//   if (action.type === "TOGGLE_FORM"){
-//     return {...state , shouldshowform : !state.shouldshowform}
-//   }
-//   if (action.type === 'ADD_WORD'){
-//     const newWords = [...state.words]
-//     const newWord = {
-//         id : state.words.length + 1,
-//         en : action.en ,
-//         vn : action.vn ,
-//         isMemorized : false
-//     }
-//     newWords.unshift(newWord)
-//     return {...state , words : newWords , shouldshowform : false}
-//   }
-//   if (action.type === 'TOGGLE_MEMORIZED'){
-//     const newWords = state.words.map(word => {
-//       if (word.id === action.id){
-//         return {...word , isMemorized : !word.isMemorized}
-//       }
-//       return word
-//     })
-//     return {...state , words : newWords}
-//   }
-//   if (action.type === 'REMOVE_WORD'){
-//     const newWords = state.words.filter(word => word.id !== action.id)
-//     return {...state , words : newWords}
-//   }
-//   if (action.type === 'SET_FILTER_MODE'){
-//     return {...state , filterMode : action.filterMode}
-//   }
-//   return state;
-// }
