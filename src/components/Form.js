@@ -10,6 +10,10 @@ class Form extends Component {
             vn : ''
         }
     }
+
+    toggleForm = () => {
+        this.props.dispatch({type : 'TOGGLE_FORM'})
+    }
     shouldComponentUpdate(nextProps){
         if(nextProps.shouldshowform == this.props.shouldshowform){
             return false
@@ -18,10 +22,16 @@ class Form extends Component {
     }
 
     addWord = () => {
-        this.props.onAddWord(this.state.en,this.state.vn)
+        const {en , vn} = this.state
+        if (!en || !vn){
+            alert("Ban chua truyen du thong tin")
+            return
+        }
+        this.props.dispatch({type : 'ADD_WORD' , en , vn})
         this.setState({en : '' , vn : ''})
         this.inputEn.clear()
         this.inputVn.clear()
+        // alert("Them du lieu thanh cong")
     }
     renderForm = (shouldshowform) => {
         if (shouldshowform){
@@ -47,7 +57,7 @@ class Form extends Component {
                             <Text style={styles.textTouchable}>Add word</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => this.props.onToggleForm()}
+                            onPress={this.toggleForm}
                             style={styles.touchableCancel}
                         >
                             <Text style={styles.textTouchable}>Cancel</Text>
@@ -60,7 +70,7 @@ class Form extends Component {
             return (
                 <TouchableOpacity
                     style={styles.buttonOpenForm}
-                    onPress={() => this.props.onToggleForm()}>
+                    onPress={this.toggleForm}>
                     <Text style={styles.textOpenForm}>+</Text>
                 </TouchableOpacity>
             )

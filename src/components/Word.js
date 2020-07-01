@@ -30,7 +30,7 @@ class Word extends Component {
                     </View>
                     <View style={styles.textgroup}>
                         <TouchableOpacity
-                            onPress={() => this.props.onToggleMemorized(item)}
+                            onPress={() => this.props.dispatch({type :'TOGGLE_MEMORIZED' ,id : item.id })}
                             style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
                         >
                             <Text 
@@ -39,7 +39,7 @@ class Word extends Component {
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => this.props.onRemoveWord(item)}
+                            onPress={() => this.props.dispatch({type : 'REMOVE_WORD' , id : item.id})}
                             style={styles.buttonRemove}
                         >
                             <Text style={styles.textRemove}>Remove</Text>

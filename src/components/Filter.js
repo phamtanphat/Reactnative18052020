@@ -6,19 +6,15 @@ import {connect} from 'react-redux';
 class Filter extends Component {
   state = {
     filterMode: 'Show_All',
-    filterSelected: null,
   };
   render() {
     return (
       <View style={styles.containerPickerStyle}>
         <RNPickerSelect
-          value={this.props.filterMode}
-          onValueChange={(value) => this.state.filterSelected = value}
+          value={this.state.filterMode}
+          onValueChange={(value) => this.setState({filterMode : value})}
           onDonePress={() => {
-            this.setState({filterMode : this.state.filterSelected}, () => {
-              this.props.onSetFilterMode(this.state.filterMode)
-            })
-           
+              this.props.dispatch({type : 'SET_FILTER_MODE' , filterMode : this.state.filterMode})
           }}
           items={[
               { label: 'Show All', value: 'Show_All' },
