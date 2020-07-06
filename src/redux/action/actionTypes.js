@@ -1,0 +1,3 @@
+const TOGGLE_MEMORIZED = 'TOGGLE_MEMORIZED'
+
+export const actionType = {TOGGLE_MEMORIZED}

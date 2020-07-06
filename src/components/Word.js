@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View , StyleSheet , Dimensions , FlatList , TouchableOpacity} from 'react-native'
 import {connect} from 'react-redux'
+import { actionCreator } from '../redux/action/actionCreator'
 
 class Word extends Component {
     shouldComponentUpdate(nextProps){
@@ -30,7 +31,7 @@ class Word extends Component {
                     </View>
                     <View style={styles.textgroup}>
                         <TouchableOpacity
-                            onPress={() => this.props.dispatch({type :'TOGGLE_MEMORIZED' ,id : item.id })}
+                            onPress={() => this.props.toggleMemorized(item.id)}
                             style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
                         >
                             <Text 
@@ -119,4 +120,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = function (state) {
     return {words : state.words , filterMode : state.filterMode} 
 }
-export default connect(mapStateToProps)(Word)
+export default connect(mapStateToProps,actionCreator)(Word)
