@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View , TextInput , StyleSheet , TouchableOpacity } from 'react-native'
 import {connect} from 'react-redux'
+import { actionCreator } from '../redux/action/actionCreator';
 
 class Form extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ class Form extends Component {
     }
 
     toggleForm = () => {
-        this.props.dispatch({type : 'TOGGLE_FORM'})
+        this.props.toggleForm()
     }
     shouldComponentUpdate(nextProps){
         if(nextProps.shouldshowform == this.props.shouldshowform){
@@ -27,7 +28,7 @@ class Form extends Component {
             alert("Ban chua truyen du thong tin")
             return
         }
-        this.props.dispatch({type : 'ADD_WORD' , en , vn})
+        this.props.addWord(en , vn)
         this.setState({en : '' , vn : ''})
         this.inputEn.clear()
         this.inputVn.clear()
@@ -131,4 +132,4 @@ const mapStateToProps = function(state) {
     return {shouldshowform : state.shouldshowform}
 }
 
-export default connect(mapStateToProps)(Form)
+export default connect(mapStateToProps,actionCreator)(Form)
