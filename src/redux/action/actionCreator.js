@@ -1,7 +1,15 @@
 import { actionType } from "./actionTypes";
 import axios from "axios";
 
-const END_POINT = "https://servernode18062020.herokuapp.com/"
+import EndpointFactory from "axios-endpoints";
+
+const axiosInstance = axios.create({
+    baseURL: "https://servernode18062020.herokuapp.com"
+});
+
+const Endpoint = EndpointFactory(axiosInstance);
+
+const wordEndPoint = new Endpoint("/word"); 
 
 function toggleMemorized(id) {
     return {type : actionType.TOGGLE_MEMORIZED ,id }
@@ -25,8 +33,17 @@ function setFilterMode(filterMode) {
 
 function fetchDataWords() {
     return (dispatch) => {
-        axios.get
+        wordEndPoint.get()
+        .then(reponse => console.log(reponse))
+        .catch(error =>  console.log(error.message))
     }
 }
 
-export const actionCreator = {toggleMemorized,removeWord,addWord,toggleForm,setFilterMode}
+export const actionCreator = {
+    toggleMemorized,
+    removeWord,
+    addWord,
+    toggleForm,
+    setFilterMode,
+    fetchDataWords,
+}

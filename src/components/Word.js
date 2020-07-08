@@ -4,6 +4,9 @@ import {connect} from 'react-redux'
 import { actionCreator } from '../redux/action/actionCreator'
 
 class Word extends Component {
+    componentDidMount() {
+        this.props.fetchDataWords()
+    }
     shouldComponentUpdate(nextProps){
         if (nextProps.filterMode != this.props.filterMode || nextProps.words != this.props.words){
             return true
