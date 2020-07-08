@@ -7,6 +7,9 @@ const defaultWords = [
 ]
   
 export default function wordReducer(state = defaultWords , action){
+    if (action.type === 'FETCH_DATA_WORD'){
+        return action.words
+    }
     if (action.type === 'ADD_WORD'){
         const newWords = [...state]
         const newWord = {
