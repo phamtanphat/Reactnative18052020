@@ -34,7 +34,7 @@ class Word extends Component {
                     </View>
                     <View style={styles.textgroup}>
                         <TouchableOpacity
-                            onPress={() => this.props.toggleMemorized(item.id)}
+                            onPress={() => this.props.toggleMemorized(item._id)}
                             style={item.isMemorized ? styles.buttonisForgot : styles.buttonisMemorized}
                         >
                             <Text 
@@ -43,7 +43,7 @@ class Word extends Component {
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            onPress={() => this.props.removeWord(item.id)}
+                            onPress={() => this.props.removeWord(item._id)}
                             style={styles.buttonRemove}
                         >
                             <Text style={styles.textRemove}>Remove</Text>
@@ -58,7 +58,7 @@ class Word extends Component {
             <FlatList 
                 showsVerticalScrollIndicator={false}
                 extraData={this.props.words}
-                keyExtractor={(item,index) => item.id.toString()}
+                keyExtractor={(item,index) => item._id.toString()}
                 data={this.props.words}
                 renderItem={({item,index}) => this.itemFlatList(item,index)}
                 ItemSeparatorComponent={() => {

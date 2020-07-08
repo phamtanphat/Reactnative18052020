@@ -1,6 +1,5 @@
 import { actionType } from "./actionTypes";
 import axios from "axios";
-
 import EndpointFactory from "axios-endpoints";
 
 const axiosInstance = axios.create({
@@ -32,9 +31,15 @@ function setFilterMode(filterMode) {
 }
 
 function fetchDataWords() {
-    return (dispatch) => {
+    return dispatch => {
         wordEndPoint.get()
-        .then(reponse => console.log(reponse))
+        .then(reponse => {
+            const data = reponse.data
+            const { success , words} = data
+            if (success && words){
+                dispatch({type : actionType.FETCH_DATA_WORD , words})
+            }
+        })
         .catch(error =>  console.log(error.message))
     }
 }
