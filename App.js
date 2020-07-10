@@ -4,6 +4,7 @@ import List from './src/components/List'
 import { Provider } from 'react-redux'
 import store from './src/redux/store'
 import Screen1 from './src/screen/stack/Screen1'
+import Screen2 from './src/screen/stack/Screen2'
 
 
 
@@ -21,7 +22,8 @@ class App extends Component {
         </Provider> */}
         {/* <Form /> */}
         {/* <Filter/> */}
-        <Screen1/>
+        {/* <Screen1/> */}
+        <Screen2/>
       </View>
     )
   }
