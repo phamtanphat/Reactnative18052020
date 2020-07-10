@@ -5,8 +5,10 @@ import { Provider } from 'react-redux'
 import store from './src/redux/store'
 import Screen1 from './src/screen/stack/Screen1'
 import Screen2 from './src/screen/stack/Screen2'
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-
+const Stack = createStackNavigator()
 
 console.disableYellowBox = true;
 
@@ -23,7 +25,12 @@ class App extends Component {
         {/* <Form /> */}
         {/* <Filter/> */}
         {/* <Screen1/> */}
-        <Screen2/>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Screen1" component={Screen1} />
+            <Stack.Screen name="Screen2" component={Screen2} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </View>
     )
   }
