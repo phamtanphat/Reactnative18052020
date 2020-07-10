@@ -14,7 +14,12 @@ console.disableYellowBox = true;
 
 // Flex box
 class App extends Component {
-
+  state = {
+    isShow : true
+  }
+  setShow = (isShow) => {
+    this.setState({isShow})
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -25,12 +30,13 @@ class App extends Component {
         {/* <Form /> */}
         {/* <Filter/> */}
         {/* <Screen1/> */}
-        <NavigationContainer>
+        {/* <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Screen1" component={Screen1} />
             <Stack.Screen name="Screen2" component={Screen2} />
           </Stack.Navigator>
-        </NavigationContainer>
+        </NavigationContainer> */}
+        {this.state.isShow ? <Screen1 setShow={this.setShow}/> : null}
       </View>
     )
   }

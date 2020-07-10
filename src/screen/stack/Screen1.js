@@ -1,17 +1,48 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
 import { Text, View , TouchableOpacity, StyleSheet, TextInput} from 'react-native'
 
 export default function Screen1(props) {
+    const [taikhoan, settaikhoan] = useState('')
+    const [matkhau, setmatkhau] = useState(0)
+    const [title, settitle] = useState('Dang nhap he thong')
+
+    //Componet didmount
+    // useEffect(() => {
+    //     setmatkhau("123")
+    //     console.log("Co mk")
+    // },[])
+
+    //component did update
+    // useEffect(() => {
+    //     settaikhoan("123")
+    //     console.log("Co tk")
+    // })
+
+    //Component will mount
+    useEffect(() => {
+        const timeInterval = setInterval(() => {
+            setmatkhau(matkhau + 1)
+            console.log(matkhau)
+            props.setShow(false)
+            console.log("co")
+        } , 1000)
+        return () => {
+            clearInterval(timeInterval)
+        }
+    },[])
     return (
         <View style={styles.container}>
-            <Text style={styles.texttile}>Dang nhap he thong</Text>
+            <Text style={styles.texttile}>{title}</Text>
             <TextInput 
+                onChangeText={text => settaikhoan(text)}
                 placeholder="Nhap tai khoan"
                 style={styles.textinput}/>
             <TextInput 
+                value={matkhau}
                 placeholder="Nhap mat khau"
                 style={styles.textinput}/>
             <TouchableOpacity
+                onPress={() => props.navigation.navigate("Screen2",{name : taikhoan , settitle})}
                 style={styles.buttondangnhap}
                 >
                 <Text style={styles.textdangnhap}>Dang nhap</Text>
@@ -52,6 +83,18 @@ const styles = StyleSheet.create({
         fontSize : 20
     }
 })
+
+
+// Mounting
+// - render
+// - uses Effect (component didmount)
+
+// Updating
+// - use Effect clean 
+// - xu ly doan code effect
+
+// Mounting
+// - clear code side effect
 
 
 // destructuring 
